@@ -1,0 +1,62 @@
+//Q5. Accept 10 name in array , accept a name to be searched. If name is there in an array print message name is in list.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace finding_the_search_name
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the numebr of names you wanted to enter");
+            var s=Console.ReadLine();
+            int n = 0;
+            bool sucess = int.TryParse(s, out n);
+            if(sucess)
+            {
+                string[] arr = new string[n];
+                Console.WriteLine("Enter the names");
+                for(int i=0;i<n;i++)
+                {
+                    arr[i]=Console.ReadLine();
+                }
+                foreach(string i in  arr)
+                {
+                    Console.WriteLine(i+" ");
+                }
+                Console.WriteLine("Enter the name you wnat to search");
+                string search_name=Console.ReadLine();
+                bool answer = false;
+                string ch;
+                int indexer = -1;
+                for(int i=0;i<arr.Length;i++)
+                {
+
+                    if (arr[i].Equals(search_name,StringComparison.OrdinalIgnoreCase))
+                    {
+                        answer = true;
+                        indexer = i;
+                        break;
+                    }
+                    
+                }
+                if (answer)
+                {
+                    Console.WriteLine("Name founded at " +  (indexer+ 1));
+                }
+                else
+                {
+                    Console.WriteLine("Name not founded");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Please enter the valid number");
+            }
+            Console.WriteLine("This will execute if the exception will come or not");
+        }
+    }
+}
